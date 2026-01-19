@@ -27,7 +27,7 @@ REGION = "ap-southeast-1"
 ZONE_NAME = "run.254301.xyz"
 RECORD_NAME = "run.254301.xyz"
 
-LINE = "Yidong"   # 运营商线路
+LINE = "Yidong"   # 运营商线路（https://support.huaweicloud.com/api-dns/zh-cn_topic_0085546214.html）
 TTL = 60
 BATCH_SIZE = 50
 IP_FILE = "yes.txt"
