@@ -76,10 +76,17 @@ def delete_old_records(zone_id):
     for r in resp.recordsets or []:
         if r.name == target and r.line == LINE:
             print(f"删除旧记录：{r.id}")
-            client.delete_record_set(DeleteRecordSetRequest(
-                zone_id=zone_id,
-                recordset_id=r.id
-            ))
+            try:
+                client.delete_record_set(DeleteRecordSetRequest(
+                    zone_id=zone_id,
+                    recordset_id=r.id
+                ))
+            except exceptions.ClientRequestException as e:
+                # 如果记录不存在（404），可能是并发删除或列表延迟导致，忽略或手动删除
+                if e.status_code == 404:
+                    print(f"警告：记录 {r.id} 已不存在，跳过")
+                else:
+                    raise e
 
 
 def create_records(zone_id, ips):
