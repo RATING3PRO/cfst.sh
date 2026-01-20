@@ -20,7 +20,7 @@ if [ ! -x "$CF_BINARY" ]; then
 fi
 
 if [ ! -f "$IP_FILE" ]; then
-    echo "未找到 IP 段文件 ip.txt"
+    echo "未找到 IP 段文件"
     exit 1
 fi
 
