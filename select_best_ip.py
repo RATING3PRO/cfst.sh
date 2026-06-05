@@ -119,7 +119,7 @@ def main():
 
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         for latency, ip, port in top:
-            f.write(f"{ip}:{port}\n")
+            f.write(f"{ip}\n")
 
     print(f"测速完成，连通 {len(results)} 个，已写入延迟最低的 {len(top)} 个到 {OUT_FILE}：")
     for latency, ip, port in top:
